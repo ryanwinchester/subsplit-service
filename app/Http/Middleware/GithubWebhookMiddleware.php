@@ -64,6 +64,8 @@ class GithubWebhookMiddleware
     /**
      * Validate the github payload and signature.
      *
+     * @see http://php.net/manual/en/function.hash-hmac.php#111435
+     *
      * @param \Illuminate\Http\Request $request
      * @return bool
      */
@@ -74,6 +76,6 @@ class GithubWebhookMiddleware
 
         $payloadHash = hash_hmac($algo, $request->getContent(), $this->secret);
 
-        return $hash === $payloadHash;
+        return md5($hash) === md5($payloadHash);
     }
 }
