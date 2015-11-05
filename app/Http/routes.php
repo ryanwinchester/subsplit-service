@@ -1,15 +1,11 @@
 <?php
 
 $app->get('/', function () use ($app) {
-    return 'wut';
+    app()->abort(404);
 });
 
-$app->group([
-    'prefix' => 'webhooks',
-    'middleware' => 'github',
-    'namespace' => 'App\Http\Controllers',
-], function ($app) {
+$app->group(['prefix' => 'webhooks', 'middleware' => 'github'], function ($app) {
 
-    $app->post('push', 'WebhooksController@push');
+    $app->post('push', 'App\Http\Controllers\WebhooksController@push');
 
 });
