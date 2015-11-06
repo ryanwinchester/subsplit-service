@@ -7,13 +7,6 @@ use Closure;
 class GithubWebhookMiddleware
 {
     /**
-     * User names of authorized senders.
-     *
-     * @var array
-     */
-    private $allowedSenders = ['*'];
-
-    /**
      * Secret key used to authorize requests.
      *
      * @var string
@@ -37,28 +30,11 @@ class GithubWebhookMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $sender = $request->json('sender');
-
-        if ($this->isAllowedSender($sender) && $this->isValidRequest($request)) {
+        if ($this->isValidRequest($request)) {
             return $next($request);
         }
 
         return response("fail", 401);
-    }
-
-    /**
-     * Validate the sender.
-     *
-     * @param array $sender
-     * @return bool
-     */
-    private function isAllowedSender($sender)
-    {
-        if (in_array('*', $this->allowedSenders)) {
-            return true;
-        }
-
-        return isset($sender['login']) &&  in_array($sender['login'], $this->allowedSenders);
     }
 
     /**
@@ -71,7 +47,7 @@ class GithubWebhookMiddleware
      */
     private function isValidRequest($request)
     {
-        $signature = $request->server('X-Hub-Signature');
+        $signature = $request->server('HTTP_X_HUB_SIGNATURE');
         list($algo, $hash) = explode('=', $signature, 2);
 
         $payloadHash = hash_hmac($algo, $request->getContent(), $this->secret);

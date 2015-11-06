@@ -11,7 +11,12 @@ class WebhooksController extends Controller
      */
     public function push()
     {
-        return response(\Artisan::call('flashtag:subsplit'));
+        $exitCode = \Artisan::call('flashtag:subsplit');
+
+        if ($exitCode !== 0) {
+            return response("There was a problem with the subsplit command.", 500);
+        }
+
+        return response("ok");
     }
 }
-
