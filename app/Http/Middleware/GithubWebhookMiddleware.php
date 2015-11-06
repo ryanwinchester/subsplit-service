@@ -71,7 +71,7 @@ class GithubWebhookMiddleware
      */
     private function isValidRequest($request)
     {
-        $signature = $request->server->get('X-Hub-Signature');
+        $signature = $request->server('X-Hub-Signature');
         list($algo, $hash) = explode('=', $signature, 2);
 
         $payloadHash = hash_hmac($algo, $request->getContent(), $this->secret);
