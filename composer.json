@@ -1,5 +1,5 @@
 {
-    "name": "flashtag/services",
+    "name": "flashtag/subsplit-service",
     "description": "Flashtag services...",
     "keywords": ["webhooks", "commands", "schedule"],
     "license": "MIT",
