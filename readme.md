@@ -1,5 +1,8 @@
 # Flashtag Subsplit Service
 
+[![version](https://img.shields.io/packagist/v/flashtag/subsplit-service.svg)](https://packagist.org/packages/flashtag/subsplit-service)
+[![license](https://img.shields.io/packagist/l/flashtag/subsplit-service.svg)](https://packagist.org/packages/flashtag/subsplit-service)
+
 ### Github Webhook and Scheduler
 
 Have you ever wanted to split some of your code from your project into components... maybe read-only github repositories like [Symfony](https://github.com/symfony) and [Laravel](https://github.com/laravel)?
@@ -72,3 +75,10 @@ or schedule the command yourself. For my own project, I've set up this cron job 
  ```
  0 0 * * * php /path/to/project/artisan flashtag:subsplit
  ```
+ 
+### Powered By
+ 
+ Sometimes re-inventing the wheel is a good idea and sometimes you have great packages like:
+ 
+ - [Lumen PHP Framework](https://github.com/laravel/lumen)
+ - [Git Subsplit](https://github.com/dflydev/git-subsplit)
