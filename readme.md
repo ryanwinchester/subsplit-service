@@ -2,21 +2,35 @@
 
 #### Webhooks
 
-`git push` webhook that runs the subtree split command from a github webhook
+**git push** webhook that runs the subtree split command from a github webhook
 
 #### Scheduled commands
 
-`php artisan flashtag:subsplit` command will run the subtree split command and publish to the subtree repositories.
+`php /path/to/project/artisan flashtag:subsplit` command will run the subtree split command and publish to the subtree repositories.
+
+You can either use the scheduler as intended in the `Console/Kernel`, or schedule the command yourself. I've done this, to just execute this every night:
+
+ ```
+ 0 0 * * * php /path/to/project/artisan flashtag:subsplit
+ ```
 
 ### Install
 
-Install with composer `composer create-project flashtag/services --prefer-dist`
+Install with composer:
+
+```bash
+composer create-project flashtag/services --prefer-dist
+```
+
+### Setup
 
 You will need to also install [dflydev/git-subsplit](https://github.com/dflydev/git-subsplit) (I'll make this part of the package later)
 
 Copy the example environment file `cp .env.example .env` and change the appropriate properties.
 
-The `WEBHOOK_SECRET` is what you will also set the `secret` property in the github webhook setup.
+The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the github webhook setup:
+
+![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
 
 Edit the [build/flashtag-subsplit.sh](https://github.com/flashtag/services/blob/master/build/flashtag-subsplit.sh) file to match your repo, and this package should actually just work almost out-of-the-box for your own repos as well.
 
