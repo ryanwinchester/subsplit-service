@@ -7,21 +7,6 @@ use Closure;
 class GithubWebhookMiddleware
 {
     /**
-     * Secret key used to authorize requests.
-     *
-     * @var string
-     */
-    private $secret;
-
-    /**
-     * Instantiate and set the secret key...
-     */
-    public function __construct()
-    {
-        $this->secret = env('WEBHOOK_SECRET');
-    }
-
-    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,6 +25,7 @@ class GithubWebhookMiddleware
     /**
      * Validate the github payload and signature.
      *
+     * If you're wondering why the md5, see the link below.
      * @see http://php.net/manual/en/function.hash-hmac.php#111435
      *
      * @param \Illuminate\Http\Request $request
@@ -48,10 +34,12 @@ class GithubWebhookMiddleware
     private function isValidRequest($request)
     {
         $signature = $request->server('HTTP_X_HUB_SIGNATURE');
-        list($algo, $hash) = explode('=', $signature, 2);
+        $secret = env('WEBHOOK_SECRET');
 
-        $payloadHash = hash_hmac($algo, $request->getContent(), $this->secret);
+        list($algo, $expectedHash) = explode('=', $signature, 2);
 
-        return md5($hash) === md5($payloadHash);
+        $payloadHash = hash_hmac($algo, $request->getContent(), $secret);
+
+        return md5($expectedHash) === md5($payloadHash);
     }
 }
