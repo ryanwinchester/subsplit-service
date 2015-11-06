@@ -1,34 +1,28 @@
-## Flashtag Services
+# Flashtag Subsplit Service
 
-#### Webhooks
+### Github Webhook and Scheduler
+
+Have you ever wanted to split some of your code from your project into components... maybe read-only github repositories like Symfony and Laravel?
+
+Well, I did. It took me a while to find a good way to do it and now I'm going to help you. This subsplit project will help you to automate it with webhooks and/or scheduled commands.
+
+##### Webhooks
 
 **git push** webhook that runs the subtree split command from a github webhook
 
-#### Scheduled commands
+##### Scheduled commands
 
-`php /path/to/project/artisan flashtag:subsplit` command will run the subtree split command and publish to the subtree repositories.
-
-You can either use the scheduler as intended in the `Console/Kernel`, or schedule the command yourself. I've done this, to just execute this every night:
-
- ```
- 0 0 * * * php /path/to/project/artisan flashtag:subsplit
- ```
+A `flashtag:subsplit` command will run the subtree split command and publish to the subtree repositories.
 
 ### Install
 
 Install with composer:
 
 ```bash
-composer create-project flashtag/services --prefer-dist
+composer create-project flashtag/subsplit-service --prefer-dist
 ```
 
 ### Setup
-
-Copy the example environment file `cp .env.example .env` and change the appropriate properties.
-
-The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the github webhook setup:
-
-![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
 
 Edit the [build/flashtag-subsplit.sh](https://github.com/flashtag/services/blob/master/build/flashtag-subsplit.sh) file to match your repo, and this package should actually just work almost out-of-the-box for your own repos as well.
 
@@ -54,3 +48,27 @@ git subsplit publish --heads="master" src/Three:git@github.com:Foobar/three.git
 # . . .
 rm -rf .subsplit/
 ```
+
+#### For webhooks:
+
+Copy the example environment file `cp .env.example .env` and change the appropriate properties.
+
+The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the github webhook setup:
+
+![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
+
+Your github push webhook url path is `https://whateveryourdomain.com/webhooks/push`
+
+#### For the scheduled command:
+
+You can either use the scheduler as lumen intended in the `app/Console/Kernel`, by setting up this cron job:
+
+```
+* * * * * php /path/to/project/artisan schedule:run
+```
+
+or schedule the command yourself. I've set up this cron job to just execute this every night:
+
+ ```
+ 0 0 * * * php /path/to/project/artisan flashtag:subsplit
+ ```
