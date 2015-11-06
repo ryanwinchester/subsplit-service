@@ -41,3 +41,16 @@ git subsplit publish --heads="master" app/Cms:git@github.com:flashtag/cms.git
 git subsplit publish --heads="master" app/Data:git@github.com:flashtag/data.git
 rm -rf .subsplit/
 ```
+
+Would change to look like:
+
+```bash
+git subsplit init git@github.com:Foobar/Parent.git
+git subsplit publish --heads="master" src/One:git@github.com:Foobar/one.git
+git subsplit publish --heads="master" src/Two:git@github.com:Foobar/two.git
+git subsplit publish --heads="master" src/Three:git@github.com:Foobar/three.git
+# . . .
+# etc.
+# . . .
+rm -rf .subsplit/
+```
