@@ -2,9 +2,9 @@
 
 ### Github Webhook and Scheduler
 
-Have you ever wanted to split some of your code from your project into components... maybe read-only github repositories like Symfony and Laravel?
+Have you ever wanted to split some of your code from your project into components... maybe read-only github repositories like [Symfony](https://github.com/symfony) and [Laravel](https://github.com/laravel)?
 
-Well, I did. It took me a while to find a good way to do it and now I'm going to help you. This subsplit project will help you to automate it with webhooks and/or scheduled commands.
+Well, I certainly did. It took me a while to find a good way to do it and now I'm going to help you do the same. This subsplit project will help you to automate the process with webhooks and/or scheduled commands.
 
 ##### Webhooks
 
@@ -16,7 +16,7 @@ A `flashtag:subsplit` command will run the subtree split command and publish to 
 
 ### Install
 
-Install with composer:
+Install with [composer](https://getcomposer.org/):
 
 ```bash
 composer create-project flashtag/subsplit-service --prefer-dist
@@ -57,17 +57,17 @@ The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the g
 
 ![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
 
-Your github push webhook url path is `https://whateveryourdomain.com/webhooks/push`
+Your github push webhook payload url path is `https://whateveryourdomain.com/webhooks/push`
 
 #### For the scheduled command:
 
-You can either use the scheduler as lumen intended in the `app/Console/Kernel`, by setting up this cron job:
+You can either use the scheduler as lumen intended in the [`app/Console/Kernel`](https://github.com/flashtag/subsplit-service/blob/master/app/Console/Kernel.php), by setting up this cron job:
 
 ```
 * * * * * php /path/to/project/artisan schedule:run
 ```
 
-or schedule the command yourself. I've set up this cron job to just execute this every night:
+or schedule the command yourself. For my own project, I've set up this cron job to just execute this every night:
 
  ```
  0 0 * * * php /path/to/project/artisan flashtag:subsplit
