@@ -24,8 +24,6 @@ composer create-project flashtag/services --prefer-dist
 
 ### Setup
 
-You will need to also install [dflydev/git-subsplit](https://github.com/dflydev/git-subsplit) (I'll make this part of the package later)
-
 Copy the example environment file `cp .env.example .env` and change the appropriate properties.
 
 The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the github webhook setup:

@@ -28,5 +28,10 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "scripts": {
+        "post-update-cmd": "sh .git-subsplit/install.sh",
+        "post-install-cmd": "sh .git-subsplit/install.sh",
+        "post-create-project-cmd": "sh .git-subsplit/install.sh"
     }
 }
