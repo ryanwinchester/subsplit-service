@@ -25,6 +25,12 @@ Install with [composer](https://getcomposer.org/):
 composer create-project flashtag/subsplit-service --prefer-dist
 ```
 
+From the project directory:
+
+```bash
+cd .git-subsplit; ./install.sh
+```
+
 ### Setup
 
 Edit the [build/flashtag-subsplit.sh](https://github.com/flashtag/services/blob/master/build/flashtag-subsplit.sh) file to match your repo, and this package should actually just work almost out-of-the-box for your own repos as well.
@@ -75,10 +81,10 @@ or schedule the command yourself. For my own project, I've set up this cron job 
  ```
  0 0 * * * php /path/to/project/artisan flashtag:subsplit
  ```
- 
+
 ### Powered By
- 
+
  Sometimes re-inventing the wheel is a good idea and sometimes you have great packages like:
- 
+
  - [Lumen PHP Framework](https://github.com/laravel/lumen)
  - [Git Subsplit](https://github.com/dflydev/git-subsplit)
