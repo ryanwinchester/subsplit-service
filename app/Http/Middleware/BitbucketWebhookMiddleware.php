@@ -60,7 +60,7 @@ class BitbucketWebhookMiddleware
      * @param  string $range  IP/CIDR netmask eg. 127.0.0.0/24, also 127.0.0.1 is accepted and /32 assumed
      * @return bool           true if the ip is in this range / false if not.
      */
-    function ipInRange($ip, $range)
+    private function ipInRange($ip, $range)
     {
     	if (strpos($range, '/') == false) {
     		$range .= '/32';
