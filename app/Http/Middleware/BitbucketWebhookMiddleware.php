@@ -42,13 +42,13 @@ class BitbucketWebhookMiddleware
      */
     private function isValidRequest($request)
     {
+        $results = [];
+
         foreach ($this->ranges as $range) {
-            if (! $this->ipInRange($request->ip(), $range)) {
-                return false;
-            }
+            $results[] = $this->ipInRange($request->ip(), $range);
         }
 
-        return true;
+        return in_array(true, $results);
     }
 
     /**
