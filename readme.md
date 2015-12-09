@@ -81,15 +81,15 @@ The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the g
 
 ![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
 
-Your github push webhook payload url path is `https://whateveryourdomain.com/webhooks/github`
+Your github push webhook payload url path is `/webhooks/github` so an example webhook url would look something like `https://subsplit.whateveryourdomain.com/webhooks/github`
 
 ##### BITBUCKET
 
-Your bitbucket push webhook url path is `https://whateveryourdomain.com/webhooks/bitbucket`
+Your bitbucket push webhook url path is `/webhooks/bitbucket` so an example webhook url would look something like `https://subsplit.whateveryourdomain.com/webhooks/bitbucket`
 
 ##### GITLAB
 
-Your gitlab push webhook url path is `https://whateveryourdomain.com/webhooks/gitlab`
+Your gitlab push webhook url path is `/webhooks/gitlab` so an example webhook url would look something like `https://subsplit.whateveryourdomain.com/webhooks/gitlab`
 
 
 #### For the scheduled command:
