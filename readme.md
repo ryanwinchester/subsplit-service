@@ -3,7 +3,7 @@
 [![version](https://img.shields.io/packagist/v/flashtag/subsplit-service.svg)](https://packagist.org/packages/flashtag/subsplit-service)
 [![license](https://img.shields.io/packagist/l/flashtag/subsplit-service.svg)](https://packagist.org/packages/flashtag/subsplit-service)
 
-### Github Webhook and Scheduler
+### Webhook and Scheduler
 
 Have you ever wanted to split some of your code from your project into components... maybe read-only github repositories like [Symfony](https://github.com/symfony) and [Laravel](https://github.com/laravel)?
 
@@ -11,7 +11,7 @@ Well, I certainly did. It took me a while to find a good way to do it and now I'
 
 ##### Webhooks
 
-**git push** webhook that runs the subtree split command from a github webhook
+**git push** webhook that runs the subtree split command from a github, bitbucket, or gitlab webhook
 
 ##### Scheduled commands
 
