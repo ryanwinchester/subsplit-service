@@ -17,10 +17,22 @@ $app->group(['prefix' => 'webhooks'], function ($app) {
     |
     */
 
-    $app->post('github', ['middleware' => 'github'], 'App\Http\Controllers\WebhooksController@push');
+    // Github
+    $app->post('github', [
+        'middleware' => 'github',
+        'uses' => 'App\Http\Controllers\WebhooksController@push',
+    ]);
 
-    $app->post('bitbucket', ['middleware' => 'bitbucket'], 'App\Http\Controllers\WebhooksController@push');
+    // Bitbucket
+    $app->post('bitbucket', [
+        'middleware' => 'bitbucket',
+        'uses' => 'App\Http\Controllers\WebhooksController@push',
+    ]);
 
-    // $app->post('gitlab', ['middleware' => 'gitlab'], 'App\Http\Controllers\WebhooksController@push');
+    // // Gitlab
+    // $app->post('gitlab', [
+    //     'middleware' => 'gitlab',
+    //     'uses' => 'App\Http\Controllers\WebhooksController@push',
+    // ]);
 
 });
