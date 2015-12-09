@@ -65,7 +65,7 @@ Copy the example environment file `cp .env.example .env` and change the appropri
 **Uncomment** the line corresponding to the service you are using to send the webhook in [`app/Http/routes/php`](https://github.com/ryanwinchester/subsplit-service/blob/master/app/Http/routes.php)
 and comment out any you aren't using.
 
-Currently, gitlab is commented out by default because I don't know of any way to validate the request.
+Currently, the gitlab route is commented out by default because I don't know of any way to validate the request.
 
 ```php
 // Github
