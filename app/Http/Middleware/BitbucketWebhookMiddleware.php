@@ -54,7 +54,7 @@ class BitbucketWebhookMiddleware
     /**
      * Check if a given ip is in a network.
      *
-     * @see https://gist.github.com/ryanwinchester/578c5b50647df3541794
+     * @see https://gist.github.com/tott/7684443
      *
      * @param  string $ip     IP to check in IPV4 format eg. 127.0.0.1
      * @param  string $range  IP/CIDR netmask eg. 127.0.0.0/24, also 127.0.0.1 is accepted and /32 assumed
