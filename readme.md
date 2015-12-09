@@ -62,11 +62,35 @@ rm -rf .subsplit/
 
 Copy the example environment file `cp .env.example .env` and change the appropriate properties.
 
+**Uncomment** the line corresponding to the service you are using to send the webhook in [`app/Http/routes/php`](https://github.com/ryanwinchester/subsplit-service/blob/master/app/Http/routes.php)
+and comment out any you aren't using.
+
+Currently, gitlab is commented out by default because I don't know of any way to validate the request.
+
+```php
+    $app->post('github', ['middleware' => 'github'], 'App\Http\Controllers\WebhooksController@push');
+
+    $app->post('bitbucket', ['middleware' => 'bitbucket'], 'App\Http\Controllers\WebhooksController@push');
+
+    // $app->post('gitlab', ['middleware' => 'gitlab'], 'App\Http\Controllers\WebhooksController@push');
+```
+
+##### GITHUB
+
 The `WEBHOOK_SECRET` is what you will also set the `secret` property to in the github webhook setup:
 
 ![Github add webhook](https://s3-us-west-2.amazonaws.com/ryanwinchester/screenshots/github-webhook-add.png)
 
-Your github push webhook payload url path is `https://whateveryourdomain.com/webhooks/push`
+Your github push webhook payload url path is `https://whateveryourdomain.com/webhooks/github`
+
+##### BITBUCKET
+
+Your bitbucket push webhook url path is `https://whateveryourdomain.com/webhooks/bitbucket`
+
+##### GITLAB
+
+Your gitlab push webhook url path is `https://whateveryourdomain.com/webhooks/gitlab`
+
 
 #### For the scheduled command:
 

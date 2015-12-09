@@ -20,6 +20,8 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->withFacades();
+
+// Add the Artisan facade since it's not included by default.
 class_alias('Illuminate\Support\Facades\Artisan', 'Artisan');
 
 // $app->withEloquent();
@@ -56,16 +58,10 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     // Illuminate\Cookie\Middleware\EncryptCookies::class,
-//     // Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-//     // Illuminate\Session\Middleware\StartSession::class,
-//     // Illuminate\View\Middleware\ShareErrorsFromSession::class,
-//     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
-// ]);
-
  $app->routeMiddleware([
     'github' => 'App\Http\Middleware\GithubWebhookMiddleware',
+    'bitbucket' => 'App\Http\Middleware\BitbucketWebhookMiddleware',
+    'gitlab' => 'App\Http\Middleware\GitlabWebhookMiddleware',
  ]);
 
 /*
