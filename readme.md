@@ -106,7 +106,7 @@ or schedule the command yourself. For my own project, I've set up this cron job 
  0 0 * * * php /path/to/project/artisan flashtag:subsplit
  ```
 
-### Powered By
+### Powered by
 
  Sometimes re-inventing the wheel is a good idea and sometimes you have great packages like:
 
