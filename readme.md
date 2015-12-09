@@ -68,11 +68,23 @@ and comment out any you aren't using.
 Currently, gitlab is commented out by default because I don't know of any way to validate the request.
 
 ```php
-    $app->post('github', ['middleware' => 'github'], 'App\Http\Controllers\WebhooksController@push');
+// Github
+$app->post('github', [
+    'middleware' => 'github',
+    'uses' => 'App\Http\Controllers\WebhooksController@push',
+]);
 
-    $app->post('bitbucket', ['middleware' => 'bitbucket'], 'App\Http\Controllers\WebhooksController@push');
+// Bitbucket
+$app->post('bitbucket', [
+    'middleware' => 'bitbucket',
+    'uses' => 'App\Http\Controllers\WebhooksController@push',
+]);
 
-    // $app->post('gitlab', ['middleware' => 'gitlab'], 'App\Http\Controllers\WebhooksController@push');
+// // Gitlab
+// $app->post('gitlab', [
+//     'middleware' => 'gitlab',
+//     'uses' => 'App\Http\Controllers\WebhooksController@push',
+// ]);
 ```
 
 ##### GITHUB
