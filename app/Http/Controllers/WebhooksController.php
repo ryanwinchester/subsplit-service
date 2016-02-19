@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Subsplit;
+
 class WebhooksController extends Controller
 {
     /**
@@ -11,12 +13,8 @@ class WebhooksController extends Controller
      */
     public function push()
     {
-        $exitCode = \Artisan::call('flashtag:subsplit');
+        $this->dispatch(new Subsplit());
 
-        if ($exitCode !== 0) {
-            return response("There was a problem with the subsplit command.", 500);
-        }
-
-        return response("ok");
+        return response("queued");
     }
 }
