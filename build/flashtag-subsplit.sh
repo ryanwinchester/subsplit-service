@@ -5,5 +5,5 @@ git subsplit publish --work-dir="$WORK_DIR" --heads="master develop" app/Admin:g
 git subsplit publish --work-dir="$WORK_DIR" --heads="master develop" app/Api:git@github.com:flashtag/api.git
 git subsplit publish --work-dir="$WORK_DIR" --heads="master develop" app/Front:git@github.com:flashtag/front.git
 git subsplit publish --work-dir="$WORK_DIR" --heads="master develop" app/Data:git@github.com:flashtag/data.git
-rm -rf .subsplit/
 
+rm -rf "$WORK_DIR"
