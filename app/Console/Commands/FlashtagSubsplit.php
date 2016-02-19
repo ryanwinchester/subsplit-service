@@ -29,7 +29,7 @@ class FlashtagSubsplit extends Command
     {
         $output = [];
         $return_var = -1;
-        $command = "sh " . base_path("build/flashtag-subsplit.sh");
+        $command = "sh " . base_path("build/flashtag-subsplit.sh") . " " . base_path(".subsplit");
 
         $last_line = exec($command, $output, $return_var);
 

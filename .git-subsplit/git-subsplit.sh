@@ -17,7 +17,7 @@ h,help        show the help
 q             quiet
 debug         show plenty of debug output
 n,dry-run     do everything except actually send the updates
-work-dir      directory that contains the subsplit working directory
+work-dir=     directory that contains the subsplit working directory
 
  options for 'publish'
 heads=        only publish for listed heads instead of all heads
@@ -47,7 +47,7 @@ QUIET=
 COMMAND=
 SPLITS=
 REPO_URL=
-WORK_DIR="${PWD}/.subsplit"
+WORK_DIR=
 HEADS=
 NO_HEADS=
 TAGS=
@@ -65,6 +65,7 @@ subsplit_main()
 			-q) QUIET=1 ;;
 			--debug) VERBOSE=1 ;;
 			--heads) HEADS="$1"; shift ;;
+            --work-dir) WORK_DIR="$1"; shift ;;
 			--no-heads) NO_HEADS=1 ;;
 			--tags) TAGS="$1"; shift ;;
 			--no-tags) NO_TAGS=1 ;;
